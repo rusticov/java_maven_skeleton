@@ -1,0 +1,16 @@
+package com.codemanship;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class AddItemTest {
+
+    @Test
+    void ifSufficientStockAndAddOneOfProductThenHoldOneOfProduct() {
+        Product product = new Product(7, 0);
+        Order order = new Order();
+        order.addItem(product, 1);
+        assertEquals(1, product.onHold());
+    }
+}
