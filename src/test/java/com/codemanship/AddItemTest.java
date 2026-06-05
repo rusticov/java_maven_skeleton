@@ -13,4 +13,12 @@ public class AddItemTest {
         order.addItem(product, 1);
         assertEquals(1, product.onHold());
     }
+
+    @Test
+    void ifSufficientStockAndAddTwoOfProductThenHoldTwoOfProduct() {
+        Product product = new Product(7, 0);
+        Order order = new Order();
+        order.addItem(product, 2);
+        assertEquals(2, product.onHold());
+    }
 }
