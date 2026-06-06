@@ -45,6 +45,7 @@ public class AddItemTest {
 
         Order order = new Order();
 
-        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
 }
