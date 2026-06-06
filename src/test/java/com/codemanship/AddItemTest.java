@@ -29,4 +29,12 @@ public class AddItemTest {
         order.addItem(product, 1);
         assertEquals(1, order.quantityOf(product));
     }
+
+    @Test
+    void ifSufficientStockAddTwoOfProductThenOrderHasTwoOfProduct() {
+        Product product = new Product(7, 0);
+        Order order = new Order();
+        order.addItem(product, 2);
+        assertEquals(2, order.quantityOf(product));
+    }
 }
