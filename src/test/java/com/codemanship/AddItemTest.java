@@ -1,5 +1,6 @@
 package com.codemanship;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -67,5 +68,16 @@ public class AddItemTest {
         assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than it in stock");
 
         assertEquals(0, product.onHold(), "confirm product on hold has not changed");
+    }
+
+    @Test
+    @DisplayName("given product has 2 stock and 1 on hold when I add 2 product then throw InsufficientStockException")
+    void insufficientNotOnHoldStockWhenAddProductToOrderThenThrow() {
+        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 2, 1);
+
+        Order order = new Order();
+
+        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
 }

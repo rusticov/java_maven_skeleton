@@ -26,8 +26,9 @@ public class Product {
     }
 
     public void placeOnHold(int quantity) {
-        if (quantity > stock) {
-            var message = "Insufficient stock of %s. Only %d currently available.".formatted(description, stock);
+        var availableStock = stock - onHold;
+        if (quantity > availableStock) {
+            var message = "Insufficient stock of %s. Only %d currently available.".formatted(description, availableStock);
             throw new InsufficientStockException(message);
         }
         onHold += quantity;
