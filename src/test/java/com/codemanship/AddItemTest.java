@@ -58,4 +58,14 @@ public class AddItemTest {
 
         assertEquals(0, order.quantityOf(product), "confirm product was not added to the order");
     }
+
+    @Test
+    void insufficientStockWhenAddTwoOfProductThenProductIsNotOnHold() {
+        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
+
+        Order order = new Order();
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than it in stock");
+
+        assertEquals(0, product.onHold(), "confirm product on hold has not changed");
+    }
 }
