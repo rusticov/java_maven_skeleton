@@ -80,4 +80,15 @@ public class AddItemTest {
         var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
         assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("given product has 2 stock and 1 on hold when I add 2 product then items not added to order")
+    void insufficientNotOnHoldStockWhenAddProductToOrderThenItemsNotAddedToOrder() {
+        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 2, 1);
+
+        Order order = new Order();
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than is available");
+
+        assertEquals(0, order.quantityOf(product), "confirm product was not added to the order");
+    }
 }
