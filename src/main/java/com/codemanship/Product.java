@@ -10,10 +10,12 @@ public class Product {
     }
 
     private final Id id;
+    private final int stock;
     private int onHold;
 
     public Product(Id id, int stock, int onHold) {
         this.id = id;
+        this.stock = stock;
         this.onHold = onHold;
     }
 
@@ -22,6 +24,9 @@ public class Product {
     }
 
     public void placeOnHold(int quantity) {
+        if (quantity > stock) {
+            throw new InsufficientStockException();
+        }
         onHold += quantity;
     }
 }

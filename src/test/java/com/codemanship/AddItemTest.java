@@ -3,6 +3,7 @@ package com.codemanship;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddItemTest {
 
@@ -36,5 +37,14 @@ public class AddItemTest {
         Order order = new Order();
         order.addItem(product, 2);
         assertEquals(2, order.quantityOf(product));
+    }
+
+    @Test
+    void insufficientStockWhenAddTwoOfProductThenThrow() {
+        Product product = new Product(new Product.Id(327), 1, 0);
+
+        Order order = new Order();
+
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
     }
 }
