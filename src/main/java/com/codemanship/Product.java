@@ -3,9 +3,11 @@ package com.codemanship;
 public class Product {
 
     public record Id(int id) {
+
     }
 
     private final Id id;
+
     private final String description;
     private final int stock;
     private int onHold;
@@ -37,5 +39,9 @@ public class Product {
             var message = "Insufficient stock of %s. Only %d currently available.".formatted(description, availableStock);
             throw new InsufficientStockException(message);
         }
+    }
+
+    public void releaseFromOnHold(int currentQuantity) {
+        onHold -= currentQuantity;
     }
 }
