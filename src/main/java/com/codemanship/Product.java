@@ -2,10 +2,6 @@ package com.codemanship;
 
 public class Product {
 
-    public Id getId() {
-        return id;
-    }
-
     public record Id(int id) {
     }
 
@@ -19,6 +15,10 @@ public class Product {
         this.description = description;
         this.stock = stock;
         this.onHold = onHold;
+    }
+
+    public Id getId() {
+        return id;
     }
 
     public int onHold() {
