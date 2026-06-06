@@ -1,9 +1,13 @@
 package com.codemanship;
 
 public class Product {
+
+    public record Id(int id) {
+    }
+
     private int onHold;
 
-    public Product(int stock, int onHold) {
+    public Product(Id id, int stock, int onHold) {
         this.onHold = onHold;
     }
 

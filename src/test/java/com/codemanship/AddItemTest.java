@@ -8,7 +8,7 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAndAddOneOfProductThenHoldOneOfProduct() {
-        Product product = new Product(7, 0);
+        Product product = new Product(new Product.Id(327), 7, 0);
         Order order = new Order();
         order.addItem(product, 1);
         assertEquals(1, product.onHold());
@@ -16,7 +16,7 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAndAddTwoOfProductThenHoldTwoOfProduct() {
-        Product product = new Product(7, 0);
+        Product product = new Product(new Product.Id(327), 7, 0);
         Order order = new Order();
         order.addItem(product, 2);
         assertEquals(2, product.onHold());
@@ -24,7 +24,7 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAddOneOfProductThenOrderHasOneOfProduct() {
-        Product product = new Product(7, 0);
+        Product product = new Product(new Product.Id(327), 7, 0);
         Order order = new Order();
         order.addItem(product, 1);
         assertEquals(1, order.quantityOf(product));
@@ -32,7 +32,7 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAddTwoOfProductThenOrderHasTwoOfProduct() {
-        Product product = new Product(7, 0);
+        Product product = new Product(new Product.Id(327), 7, 0);
         Order order = new Order();
         order.addItem(product, 2);
         assertEquals(2, order.quantityOf(product));
