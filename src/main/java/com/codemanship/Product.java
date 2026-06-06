@@ -13,7 +13,7 @@ public class Product {
     private final int stock;
     private int onHold;
 
-    public Product(Id id, int stock, int onHold) {
+    public Product(Id id, String description, int stock, int onHold) {
         this.id = id;
         this.stock = stock;
         this.onHold = onHold;
