@@ -26,11 +26,16 @@ public class Product {
     }
 
     public void placeOnHold(int quantity) {
+        checkIfStockIsAvailable(quantity);
+        onHold += quantity;
+    }
+
+    private void checkIfStockIsAvailable(int quantity) {
         var availableStock = stock - onHold;
+
         if (quantity > availableStock) {
             var message = "Insufficient stock of %s. Only %d currently available.".formatted(description, availableStock);
             throw new InsufficientStockException(message);
         }
-        onHold += quantity;
     }
 }
