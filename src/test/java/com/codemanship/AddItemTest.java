@@ -48,4 +48,14 @@ public class AddItemTest {
         var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
         assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
+
+    @Test
+    void insufficientStockWhenAddTwoOfProductThenOrderContainsNoItems() {
+        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
+
+        Order order = new Order();
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than it in stock");
+
+        assertEquals(0, order.quantityOf(product), "confirm product was not added to the order");
+    }
 }

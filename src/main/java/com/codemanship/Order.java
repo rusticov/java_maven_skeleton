@@ -13,6 +13,6 @@ public class Order {
     }
 
     public int quantityOf(Product product) {
-        return productQuantities.get(product.getId());
+        return productQuantities.getOrDefault(product.getId(), 0);
     }
 }
