@@ -13,7 +13,7 @@ public class Order {
     }
 
     private final Inventory inventory;
-    private Status status = Status.Open;
+    private Status status;
 
     private final Map<Product.Id, Integer> productQuantities = new HashMap<>();
 
@@ -22,6 +22,8 @@ public class Order {
         for (var entry : entries) {
             productQuantities.put(entry.id, entry.quantity);
         }
+
+        status = Status.Open;
     }
 
     public Status getStatus() {
