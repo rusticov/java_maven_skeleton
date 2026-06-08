@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class Order {
 
+    public enum Status {
+        Open
+    }
+
     public record Entry(Product.Id id, int quantity) {
     }
 
@@ -17,6 +21,10 @@ public class Order {
         for (var entry : entries) {
             productQuantities.put(entry.id, entry.quantity);
         }
+    }
+
+    public Status getStatus() {
+        return Status.Open;
     }
 
     public void addItem(Product.Id id, int quantity) {
