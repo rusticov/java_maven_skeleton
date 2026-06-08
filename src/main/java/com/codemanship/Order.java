@@ -6,13 +6,14 @@ import java.util.Map;
 public class Order {
 
     public enum Status {
-        Open
+        Canceled, Open
     }
 
     public record Entry(Product.Id id, int quantity) {
     }
 
     private final Inventory inventory;
+    private Status status = Status.Open;
 
     private final Map<Product.Id, Integer> productQuantities = new HashMap<>();
 
@@ -24,7 +25,7 @@ public class Order {
     }
 
     public Status getStatus() {
-        return Status.Open;
+        return status;
     }
 
     public void addItem(Product.Id id, int quantity) {
@@ -40,5 +41,9 @@ public class Order {
         var currentQuantity = quantityOf(id);
         inventory.releaseProductItemsFromOnHold(id, currentQuantity);
         productQuantities.remove(id);
+    }
+
+    public void cancel() {
+        status = Status.Canceled;
     }
 }
