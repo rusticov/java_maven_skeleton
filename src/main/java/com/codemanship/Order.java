@@ -29,8 +29,9 @@ public class Order {
     }
 
     public void removeProduct(Product product) {
-        var currentQuantity = quantityOf(product.getId());
+        Product.Id id = product.getId();
+        var currentQuantity = quantityOf(id);
         product.releaseFromOnHold(currentQuantity);
-        productQuantities.remove(product.getId());
+        productQuantities.remove(id);
     }
 }
