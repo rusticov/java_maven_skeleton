@@ -17,8 +17,9 @@ public class Order {
     }
 
     public void addItem(Product product, int quantity) {
+        Product.Id id = product.getId();
         product.placeOnHold(quantity);
-        productQuantities.put(product.getId(), quantity);
+        productQuantities.put(id, quantity);
     }
 
     public int quantityOf(Product product) {
