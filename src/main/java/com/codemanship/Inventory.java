@@ -11,7 +11,7 @@ public class Inventory {
         return product;
     }
 
-    public void placeProductItemsOnHold(Product.Id id, int quantity, Order order) {
+    public void placeProductItemsOnHold(Product.Id id, int quantity) {
         var inventoryProduct = getProduct(id);
         inventoryProduct.placeOnHold(quantity);
     }

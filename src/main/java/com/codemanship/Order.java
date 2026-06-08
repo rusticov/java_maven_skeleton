@@ -25,7 +25,7 @@ public class Order {
     }
 
     private void addItem(Product.Id id, int quantity) {
-        inventory.placeProductItemsOnHold(id, quantity, this);
+        inventory.placeProductItemsOnHold(id, quantity);
         productQuantities.put(id, quantity);
     }
 
