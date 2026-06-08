@@ -10,4 +10,9 @@ public class Inventory {
     public Product getProduct(Product.Id id) {
         return product;
     }
+
+    public void placeProductItemsOnHold(Product.Id id, int quantity, Order order) {
+        var inventoryProduct = getProduct(id);
+        inventoryProduct.placeOnHold(quantity);
+    }
 }
