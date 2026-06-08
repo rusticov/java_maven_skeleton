@@ -46,6 +46,7 @@ public class Order {
     }
 
     public void cancel() {
+        productQuantities.forEach(inventory::releaseProductItemsFromOnHold);
         status = Status.Canceled;
     }
 }
