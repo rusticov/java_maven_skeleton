@@ -8,9 +8,12 @@ public class Order {
     public record Entry(Product.Id id, int quantity) {
     }
 
+    private final Inventory inventory;
+
     private final Map<Product.Id, Integer> productQuantities = new HashMap<>();
 
     public Order(Inventory inventory, Entry... entries) {
+        this.inventory = inventory;
         for (var entry : entries) {
             productQuantities.put(entry.id, entry.quantity);
         }
@@ -18,7 +21,8 @@ public class Order {
 
     public void addItem(Product product, int quantity) {
         Product.Id id = product.getId();
-        product.placeOnHold(quantity);
+        var inventoryProduct = inventory.getProduct(id);
+        inventoryProduct.placeOnHold(quantity);
         productQuantities.put(id, quantity);
     }
 
