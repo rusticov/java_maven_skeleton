@@ -19,12 +19,7 @@ public class Order {
         }
     }
 
-    public void addItem(Product product, int quantity) {
-        Product.Id id = product.getId();
-        addItem(id, quantity);
-    }
-
-    private void addItem(Product.Id id, int quantity) {
+    public void addItem(Product.Id id, int quantity) {
         inventory.placeProductItemsOnHold(id, quantity);
         productQuantities.put(id, quantity);
     }

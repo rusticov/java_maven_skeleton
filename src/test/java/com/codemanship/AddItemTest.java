@@ -12,7 +12,7 @@ public class AddItemTest {
     void ifSufficientStockAndAddOneOfProductThenHoldOneOfProduct() {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
-        order.addItem(product, 1);
+        order.addItem(product.getId(), 1);
         assertEquals(1, product.onHold());
     }
 
@@ -20,7 +20,7 @@ public class AddItemTest {
     void ifSufficientStockAndAddTwoOfProductThenHoldTwoOfProduct() {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
-        order.addItem(product, 2);
+        order.addItem(product.getId(), 2);
         assertEquals(2, product.onHold());
     }
 
@@ -28,7 +28,7 @@ public class AddItemTest {
     void ifSufficientStockAddOneOfProductThenOrderHasOneOfProduct() {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
-        order.addItem(product, 1);
+        order.addItem(product.getId(), 1);
         assertEquals(1, order.quantityOf(product));
     }
 
@@ -36,7 +36,7 @@ public class AddItemTest {
     void ifSufficientStockAddTwoOfProductThenOrderHasTwoOfProduct() {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
-        order.addItem(product, 2);
+        order.addItem(product.getId(), 2);
         assertEquals(2, order.quantityOf(product));
     }
 
@@ -46,7 +46,7 @@ public class AddItemTest {
 
         Order order = new Order(new Inventory(product));
 
-        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2));
         assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
 
@@ -55,7 +55,7 @@ public class AddItemTest {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
 
         Order order = new Order(new Inventory(product));
-        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than it in stock");
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than it in stock");
 
         assertEquals(0, order.quantityOf(product), "confirm product was not added to the order");
     }
@@ -65,7 +65,7 @@ public class AddItemTest {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
 
         Order order = new Order(new Inventory(product));
-        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than it in stock");
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than it in stock");
 
         assertEquals(0, product.onHold(), "confirm product on hold has not changed");
     }
@@ -77,7 +77,7 @@ public class AddItemTest {
 
         Order order = new Order(new Inventory(product));
 
-        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2));
+        var exception = assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2));
         assertEquals("Insufficient stock of Ibanez Tube Screamer. Only 1 currently available.", exception.getMessage());
     }
 
@@ -87,7 +87,7 @@ public class AddItemTest {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 2, 1);
 
         Order order = new Order(new Inventory(product));
-        assertThrows(InsufficientStockException.class, () -> order.addItem(product, 2), "when adding more than is available");
+        assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than is available");
 
         assertEquals(0, order.quantityOf(product), "confirm product was not added to the order");
     }
