@@ -8,21 +8,23 @@ public class RemoveItemTest {
 
     @Test
     void twoProductItemsOnHoldWhenProductRemovedFromOrderThenItemsNotOnHold() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 2);
-        Order order = new Order(new Inventory(product), new Order.Entry(new Product.Id(327), 2));
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 2);
+        Order order = new Order(new Inventory(product), new Order.Entry(productId, 2));
 
-        order.removeProduct(product.getId());
+        order.removeProduct(productId);
 
         assertEquals(0, product.onHold());
     }
 
     @Test
     void twoProductItemsOnHoldWhenProductRemovedFromOrderThenProductRemovedFromOrder() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 2);
-        Order order = new Order(new Inventory(product), new Order.Entry(new Product.Id(327), 2));
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 2);
+        Order order = new Order(new Inventory(product), new Order.Entry(productId, 2));
 
-        order.removeProduct(product.getId());
+        order.removeProduct(productId);
 
-        assertEquals(0, order.quantityOf(product.getId()));
+        assertEquals(0, order.quantityOf(productId));
     }
 }
