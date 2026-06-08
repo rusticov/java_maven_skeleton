@@ -10,7 +10,7 @@ public class Order {
 
     private final Map<Product.Id, Integer> productQuantities = new HashMap<>();
 
-    public Order(Entry... entries) {
+    public Order(Inventory inventory, Entry... entries) {
         for (var entry : entries) {
             productQuantities.put(entry.id, entry.quantity);
         }
