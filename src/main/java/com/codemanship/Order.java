@@ -6,7 +6,7 @@ import java.util.Map;
 public class Order {
 
     public enum Status {
-        Canceled, Open
+        Canceled, Confirmed, Open
     }
 
     public record Entry(Product.Id id, int quantity) {
@@ -48,5 +48,9 @@ public class Order {
     public void cancel() {
         productQuantities.forEach(inventory::releaseProductItemsFromOnHold);
         status = Status.Canceled;
+    }
+
+    public void confirm() {
+        status = Status.Confirmed;
     }
 }
