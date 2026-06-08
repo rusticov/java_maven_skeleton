@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CancelItemTest {
+public class CancelOrderTest {
 
     private final Inventory inventory = new Inventory(
         new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 2),
@@ -16,7 +16,7 @@ public class CancelItemTest {
         new Order.Entry(new Product.Id(327), 2),
         new Order.Entry(new Product.Id(811), 1)
     );
-    
+
     @Test
     void givenAnOpenOrderThenOrderStatusIsOpen() {
         assertEquals(Order.Status.Open, order.getStatus());
