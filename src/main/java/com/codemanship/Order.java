@@ -31,12 +31,8 @@ public class Order {
     public void removeProduct(Product product) {
         Product.Id id = product.getId();
         var currentQuantity = quantityOf(id);
-        releaseProductItemsFromOnHold(id, currentQuantity);
+        inventory.releaseProductItemsFromOnHold(id, currentQuantity);
         productQuantities.remove(id);
     }
 
-    private void releaseProductItemsFromOnHold(Product.Id id, int currentQuantity) {
-        var inventoryProduct = inventory.getProduct(id);
-        inventoryProduct.releaseFromOnHold(currentQuantity);
-    }
 }
