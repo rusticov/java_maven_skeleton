@@ -11,7 +11,7 @@ public class RemoveItemTest {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 2);
         Order order = new Order(new Inventory(product), new Order.Entry(new Product.Id(327), 2));
 
-        order.removeProduct(product);
+        order.removeProduct(product.getId());
 
         assertEquals(0, product.onHold());
     }
@@ -21,7 +21,7 @@ public class RemoveItemTest {
         Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 2);
         Order order = new Order(new Inventory(product), new Order.Entry(new Product.Id(327), 2));
 
-        order.removeProduct(product);
+        order.removeProduct(product.getId());
 
         assertEquals(0, order.quantityOf(product.getId()));
     }
