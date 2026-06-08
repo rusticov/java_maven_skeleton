@@ -51,6 +51,7 @@ public class Order {
     }
 
     public void confirm() {
+        productQuantities.forEach(inventory::releaseProductItemsFromOnHold);
         status = Status.Confirmed;
     }
 }
