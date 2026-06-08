@@ -25,9 +25,13 @@ public class Order {
     }
 
     private void addItem(Product.Id id, int quantity) {
+        placeProductItemsOnHold(id, quantity);
+        productQuantities.put(id, quantity);
+    }
+
+    private void placeProductItemsOnHold(Product.Id id, int quantity) {
         var inventoryProduct = inventory.getProduct(id);
         inventoryProduct.placeOnHold(quantity);
-        productQuantities.put(id, quantity);
     }
 
     public int quantityOf(Product product) {
