@@ -23,6 +23,6 @@ public class RemoveItemTest {
 
         order.removeProduct(product);
 
-        assertEquals(0, order.quantityOf(product));
+        assertEquals(0, order.quantityOf(product.getId()));
     }
 }

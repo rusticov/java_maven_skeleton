@@ -24,12 +24,12 @@ public class Order {
         productQuantities.put(id, quantity);
     }
 
-    public int quantityOf(Product product) {
-        return productQuantities.getOrDefault(product.getId(), 0);
+    public int quantityOf(Product.Id id) {
+        return productQuantities.getOrDefault(id, 0);
     }
 
     public void removeProduct(Product product) {
-        var currentQuantity = quantityOf(product);
+        var currentQuantity = quantityOf(product.getId());
         product.releaseFromOnHold(currentQuantity);
         productQuantities.remove(product.getId());
     }
