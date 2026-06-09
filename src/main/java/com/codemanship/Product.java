@@ -19,7 +19,7 @@ public class Product {
         this.onHold = onHold;
     }
 
-    public Id getId() {
+    public Id id() {
         return id;
     }
 

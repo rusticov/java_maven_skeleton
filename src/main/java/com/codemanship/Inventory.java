@@ -9,7 +9,7 @@ public class Inventory {
     public Inventory(Product... products) {
         this.productsById = new HashMap<>();
         for (var product : products) {
-            this.productsById.put(product.getId(), product);
+            this.productsById.put(product.id(), product);
         }
     }
 
