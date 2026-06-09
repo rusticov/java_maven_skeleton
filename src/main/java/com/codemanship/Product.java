@@ -5,6 +5,10 @@ public record Product(Id id, String description, int stock, int onHold) {
     public record Id(int id) {
     }
 
+    public Product releaseFromOnHold(int currentQuantity) {
+        return new Product(id, description, stock, onHold - currentQuantity);
+    }
+
     public Product placeOnHold(int quantity) {
         checkIfStockIsAvailable(quantity);
         return new Product(id, description, stock, onHold + quantity);
@@ -17,9 +21,5 @@ public record Product(Id id, String description, int stock, int onHold) {
             var message = "Insufficient stock of %s. Only %d currently available.".formatted(description, availableStock);
             throw new InsufficientStockException(message);
         }
-    }
-
-    public Product releaseFromOnHold(int currentQuantity) {
-        return new Product(id, description, stock, onHold - currentQuantity);
     }
 }
