@@ -1,30 +1,8 @@
 package com.codemanship;
 
-public class Product {
+public record Product(Id id, String description, int stock, int onHold) {
 
     public record Id(int id) {
-
-    }
-
-    private final Id id;
-
-    private final String description;
-    private final int stock;
-    private int onHold;
-
-    public Product(Id id, String description, int stock, int onHold) {
-        this.id = id;
-        this.description = description;
-        this.stock = stock;
-        this.onHold = onHold;
-    }
-
-    public Id id() {
-        return id;
-    }
-
-    public int onHold() {
-        return onHold;
     }
 
     public Product placeOnHold(int quantity) {
