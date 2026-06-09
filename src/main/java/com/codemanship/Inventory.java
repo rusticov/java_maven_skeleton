@@ -24,6 +24,7 @@ public class Inventory {
 
     void releaseProductItemsFromOnHold(Product.Id id, int currentQuantity) {
         var inventoryProduct = getProduct(id);
-        inventoryProduct.releaseFromOnHold(currentQuantity);
+        var updatedProduct = inventoryProduct.releaseFromOnHold(currentQuantity);
+        productsById.put(id, updatedProduct);
     }
 }
