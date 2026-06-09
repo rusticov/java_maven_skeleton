@@ -52,6 +52,7 @@ public class Order {
 
     public void confirm() {
         productQuantities.forEach(inventory::releaseProductItemsFromOnHold);
+        productQuantities.forEach(inventory::removeStock);
         status = Status.Confirmed;
     }
 }

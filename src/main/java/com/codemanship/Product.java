@@ -5,6 +5,10 @@ public record Product(Id id, String description, int stock, int onHold) {
     public record Id(int id) {
     }
 
+    public Product removeStock(int quantity) {
+        return new Product(id, description, stock - quantity, onHold);
+    }
+
     public Product releaseFromOnHold(int currentQuantity) {
         return new Product(id, description, stock, onHold - currentQuantity);
     }

@@ -27,4 +27,10 @@ public class Inventory {
         var updatedProduct = inventoryProduct.releaseFromOnHold(currentQuantity);
         productsById.put(id, updatedProduct);
     }
+
+    public void removeStock(Product.Id productId, int quantity) {
+        var inventoryProduct = getProduct(productId);
+        var updatedProduct = inventoryProduct.removeStock(quantity);
+        productsById.put(productId, updatedProduct);
+    }
 }

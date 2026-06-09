@@ -31,4 +31,12 @@ public class ConfirmOrderTest {
         assertEquals(0, inventory.getProduct(new Product.Id(327)).onHold());
         assertEquals(0, inventory.getProduct(new Product.Id(811)).onHold());
     }
+
+    @Test
+    void openOrderWhenConfirmedThenProductStockReducedByOrderItemQuantities() {
+        order.confirm();
+
+        assertEquals(5, inventory.getProduct(new Product.Id(327)).stock());
+        assertEquals(1, inventory.getProduct(new Product.Id(811)).stock());
+    }
 }
