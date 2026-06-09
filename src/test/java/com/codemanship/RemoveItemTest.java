@@ -9,8 +9,10 @@ public class RemoveItemTest {
     @Test
     void twoProductItemsOnHoldWhenProductRemovedFromOrderThenItemsNotOnHold() {
         Product.Id productId = new Product.Id(327);
-        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 2);
-        Inventory inventory = new Inventory(product);
+
+        Inventory inventory = new Inventory(
+            new Product(productId, "Ibanez Tube Screamer", 7, 2)
+        );
         Order order = new Order(inventory, new Order.Entry(productId, 2));
 
         order.removeProduct(productId);
@@ -21,8 +23,10 @@ public class RemoveItemTest {
     @Test
     void twoProductItemsOnHoldWhenProductRemovedFromOrderThenProductRemovedFromOrder() {
         Product.Id productId = new Product.Id(327);
-        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 2);
-        Inventory inventory = new Inventory(product);
+
+        Inventory inventory = new Inventory(
+            new Product(productId, "Ibanez Tube Screamer", 7, 2)
+        );
         Order order = new Order(inventory, new Order.Entry(productId, 2));
 
         order.removeProduct(productId);
