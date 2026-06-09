@@ -15,7 +15,7 @@ public class AddItemTest {
         Inventory inventory = new Inventory(product);
         Order order = new Order(inventory);
         order.addItem(productId, 1);
-        assertEquals(1, product.onHold());
+        assertEquals(1, inventory.getProduct(productId).onHold());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class AddItemTest {
         Inventory inventory = new Inventory(product);
         Order order = new Order(inventory);
         order.addItem(productId, 2);
-        assertEquals(2, product.onHold());
+        assertEquals(2, inventory.getProduct(productId).onHold());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AddItemTest {
         Order order = new Order(inventory);
         assertThrows(InsufficientStockException.class, () -> order.addItem(productId, 2), "when adding more than it in stock");
 
-        assertEquals(0, product.onHold(), "confirm product on hold has not changed");
+        assertEquals(0, inventory.getProduct(productId).onHold(), "confirm product on hold has not changed");
     }
 
     @Test
