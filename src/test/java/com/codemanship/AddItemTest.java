@@ -10,7 +10,8 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAndAddOneOfProductThenHoldOneOfProduct() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
         order.addItem(product.getId(), 1);
         assertEquals(1, product.onHold());
@@ -18,7 +19,8 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAndAddTwoOfProductThenHoldTwoOfProduct() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
         order.addItem(product.getId(), 2);
         assertEquals(2, product.onHold());
@@ -26,7 +28,8 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAddOneOfProductThenOrderHasOneOfProduct() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
         order.addItem(product.getId(), 1);
         assertEquals(1, order.quantityOf(product.getId()));
@@ -34,7 +37,8 @@ public class AddItemTest {
 
     @Test
     void ifSufficientStockAddTwoOfProductThenOrderHasTwoOfProduct() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 7, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 7, 0);
         Order order = new Order(new Inventory(product));
         order.addItem(product.getId(), 2);
         assertEquals(2, order.quantityOf(product.getId()));
@@ -42,7 +46,8 @@ public class AddItemTest {
 
     @Test
     void insufficientStockWhenAddTwoOfProductThenThrow() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 1, 0);
 
         Order order = new Order(new Inventory(product));
 
@@ -52,7 +57,8 @@ public class AddItemTest {
 
     @Test
     void insufficientStockWhenAddTwoOfProductThenOrderContainsNoItems() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 1, 0);
 
         Order order = new Order(new Inventory(product));
         assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than it in stock");
@@ -62,7 +68,8 @@ public class AddItemTest {
 
     @Test
     void insufficientStockWhenAddTwoOfProductThenProductIsNotOnHold() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 1, 0);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 1, 0);
 
         Order order = new Order(new Inventory(product));
         assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than it in stock");
@@ -73,7 +80,8 @@ public class AddItemTest {
     @Test
     @DisplayName("given product has 2 stock and 1 on hold when I add 2 product then throw InsufficientStockException")
     void insufficientNotOnHoldStockWhenAddProductToOrderThenThrow() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 2, 1);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 2, 1);
 
         Order order = new Order(new Inventory(product));
 
@@ -84,7 +92,8 @@ public class AddItemTest {
     @Test
     @DisplayName("given product has 2 stock and 1 on hold when I add 2 product then items not added to order")
     void insufficientNotOnHoldStockWhenAddProductToOrderThenItemsNotAddedToOrder() {
-        Product product = new Product(new Product.Id(327), "Ibanez Tube Screamer", 2, 1);
+        Product.Id productId = new Product.Id(327);
+        Product product = new Product(productId, "Ibanez Tube Screamer", 2, 1);
 
         Order order = new Order(new Inventory(product));
         assertThrows(InsufficientStockException.class, () -> order.addItem(product.getId(), 2), "when adding more than is available");
