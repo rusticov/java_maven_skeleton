@@ -19,7 +19,7 @@ public class Inventory {
 
     public void placeProductItemsOnHold(Product.Id id, int quantity) {
         var inventoryProduct = getProduct(id);
-        inventoryProduct.placeOnHold(quantity);
+        productsById.put(id, inventoryProduct.placeOnHold(quantity));
     }
 
     void releaseProductItemsFromOnHold(Product.Id id, int currentQuantity) {

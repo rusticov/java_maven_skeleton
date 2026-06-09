@@ -27,9 +27,10 @@ public class Product {
         return onHold;
     }
 
-    public void placeOnHold(int quantity) {
+    public Product placeOnHold(int quantity) {
         checkIfStockIsAvailable(quantity);
         onHold += quantity;
+        return new Product(id, description, stock, onHold);
     }
 
     private void checkIfStockIsAvailable(int quantity) {
