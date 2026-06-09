@@ -42,7 +42,6 @@ public class Product {
     }
 
     public Product releaseFromOnHold(int currentQuantity) {
-        onHold -= currentQuantity;
-        return new Product(id, description, stock, onHold);
+        return new Product(id, description, stock, onHold - currentQuantity);
     }
 }
