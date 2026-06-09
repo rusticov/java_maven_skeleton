@@ -15,7 +15,7 @@ public class RemoveItemTest {
 
         order.removeProduct(productId);
 
-        assertEquals(0, product.onHold());
+        assertEquals(0, inventory.getProduct(productId).onHold());
     }
 
     @Test
