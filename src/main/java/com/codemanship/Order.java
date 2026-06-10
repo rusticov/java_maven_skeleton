@@ -7,7 +7,7 @@ public class Order {
 
 
     public enum Status {
-        Canceled, Confirmed, Open;
+        Canceled, Confirmed, Open
     }
 
     public record Entry(Product.Id id, int quantity) {
@@ -59,13 +59,11 @@ public class Order {
             return Money.parse("5.99");
         }
 
-        if (country.region == Region.LOCAL) {
-            return Money.parse("5.99");
-        }
-        if (country.region == Region.EU) {
-            return Money.parse("9.99");
-        }
-        return Money.parse("12.99");
+        return switch (country.region) {
+            case LOCAL -> Money.parse("5.99");
+            case EU -> Money.parse("9.99");
+            case OTHER -> Money.parse("12.99");
+        };
     }
 
     public void removeProduct(Product.Id id) {
