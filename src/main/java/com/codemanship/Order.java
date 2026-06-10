@@ -53,7 +53,10 @@ public class Order {
 
     public Money shippingCost(Country country) {
         if (totalExcludingShipping().compareTo(Money.parse("100.00")) >= 0) {
-            return Money.parse("0.00");
+            if (country == Country.UNITED_KINGDOM) {
+                return Money.parse("0.00");
+            }
+            return Money.parse("5.99");
         }
 
         if (country == Country.UNITED_KINGDOM) {

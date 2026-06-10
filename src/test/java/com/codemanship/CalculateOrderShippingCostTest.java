@@ -41,7 +41,7 @@ public class CalculateOrderShippingCostTest {
     }
 
     @Test
-    @DisplayName("order total under 100 and German customer then shipping cost is 9.99")
+    @DisplayName("order total under 100 and German (EU) customer then shipping cost is 9.99")
     void orderTotalUnder100AndGermanCustomerWhenShippingCalculatedThenShippingCostIs9_99() {
         Inventory inventory = new Inventory(
             new Product(new Product.Id(327), "Ibanez Tube Screamer", Money.parse("99.99"), 7, 1)
@@ -49,5 +49,16 @@ public class CalculateOrderShippingCostTest {
         Order order = new Order(inventory, new Order.Entry(new Product.Id(327), 1));
 
         assertEquals(Money.parse("9.99"), order.shippingCost(Country.GERMANY));
+    }
+
+    @Test
+    @DisplayName("order total at least 100.00 and French (EU) customer then shipping cost is 5.99")
+    void orderTotalAtLeast100AndFrenchCustomerWhenShippingCalculatedThenShippingCostIs5_99() {
+        Inventory inventory = new Inventory(
+            new Product(new Product.Id(327), "Ibanez Tube Screamer", Money.parse("100.00"), 7, 1)
+        );
+        Order order = new Order(inventory, new Order.Entry(new Product.Id(327), 1));
+
+        assertEquals(Money.parse("5.99"), order.shippingCost(Country.FRANCE));
     }
 }
