@@ -17,4 +17,15 @@ public class CalculateOrderShippingCostTest {
 
         assertEquals(Money.parse("5.99"), order.shippingCost(Country.UNITED_KINGDOM));
     }
+
+    @Test
+    @DisplayName("order total is exactly 100.00 and UK customer then shipping is free")
+    void orderTotal100_00AndUKCustomerWhenShippingCalculatedThenShippingCostIsFree() {
+        Inventory inventory = new Inventory(
+            new Product(new Product.Id(327), "Ibanez Tube Screamer", Money.parse("100.00"), 7, 1)
+        );
+        Order order = new Order(inventory, new Order.Entry(new Product.Id(327), 1));
+
+        assertEquals(Money.parse("0.00"), order.shippingCost(Country.UNITED_KINGDOM));
+    }
 }
