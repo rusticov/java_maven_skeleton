@@ -62,7 +62,10 @@ public class Order {
         if (country == Country.UNITED_KINGDOM) {
             return Money.parse("5.99");
         }
-        return Money.parse("9.99");
+        if (country.region == Region.EU) {
+            return Money.parse("9.99");
+        }
+        return Money.parse("12.99");
     }
 
     public void removeProduct(Product.Id id) {
