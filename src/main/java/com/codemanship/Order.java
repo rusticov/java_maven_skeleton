@@ -40,8 +40,9 @@ public class Order {
     }
 
     public Money totalExcludingShipping() {
-        var total = productQuantities.keySet().stream().map((id) -> inventory.getProduct(id).price()).findFirst();
-        return total.orElse(Money.parse("0.00"));
+        return productQuantities.keySet().stream().
+            map((id) -> inventory.getProduct(id).price()).
+            reduce(Money.parse("0.00"), Money::add);
     }
 
     public void removeProduct(Product.Id id) {

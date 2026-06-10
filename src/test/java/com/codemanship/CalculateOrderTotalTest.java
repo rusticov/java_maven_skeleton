@@ -24,4 +24,20 @@ public class CalculateOrderTotalTest {
 
         assertEquals(Money.parse("159.95"), order.totalExcludingShipping());
     }
+
+    @Test
+    @DisplayName("order with one item of two products of prices 159.95 and 1799.00 has totals 1958.95")
+    void orderWithTwoProductsOfOneItemThenTotalIsSumOfProductPrices() {
+        Inventory inventory = new Inventory(
+            new Product(new Product.Id(327), "Ibanez Tube Screamer", Money.parse("159.95"), 7, 1),
+            new Product(new Product.Id(811), "Fender Deluxe Reverb", Money.parse("1799.00"), 2, 1)
+        );
+        Order order = new Order(
+            inventory,
+            new Order.Entry(new Product.Id(327), 1),
+            new Order.Entry(new Product.Id(811), 1)
+        );
+
+        assertEquals(Money.parse("1958.95"), order.totalExcludingShipping());
+    }
 }
