@@ -39,6 +39,10 @@ public class Order {
         return productQuantities.getOrDefault(id, 0);
     }
 
+    public Money totalExcludingShipping() {
+        return Money.parse("0.00");
+    }
+
     public void removeProduct(Product.Id id) {
         var currentQuantity = quantityOf(id);
         inventory.releaseProductItemsFromOnHold(id, currentQuantity);
