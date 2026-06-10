@@ -43,7 +43,7 @@ public class Money implements Comparable<Money> {
     }
 
     @Override
-    public int compareTo(Money o) {
-        return 1;
+    public int compareTo(Money other) {
+        return value.compareTo(other.value);
     }
 }

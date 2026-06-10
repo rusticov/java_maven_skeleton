@@ -41,4 +41,9 @@ public class MoneyRepresentationTest {
     void givenMoneyAndLargerMoneyThenLargerMoneyIsGreaterThanSmaller() {
         assertEquals(1, Money.parse("1.00").compareTo(Money.parse("0.00")));
     }
+
+    @Test
+    void givenMoneyAndLargerMoneyThenSmallerMoneyIsLessThanLarger() {
+        assertEquals(-1, Money.parse("0.00").compareTo(Money.parse("1.00")));
+    }
 }
