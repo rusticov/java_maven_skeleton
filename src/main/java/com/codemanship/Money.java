@@ -19,6 +19,12 @@ public class Money {
         return new Money(value.add(other.value));
     }
 
+    public Money multiply(int multiplier) {
+        return new Money(
+            value.multiply(BigDecimal.valueOf(multiplier))
+        );
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

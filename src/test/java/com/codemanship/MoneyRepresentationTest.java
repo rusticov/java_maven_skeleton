@@ -30,4 +30,10 @@ public class MoneyRepresentationTest {
     void givenMoneyWhenAddingMoreMoneyThenReturnSumOfMoney() {
         assertEquals(Money.parse("12.34"), Money.parse("10.30").add(Money.parse("2.04")));
     }
+
+    @Test
+    @DisplayName("Money of 12.34 x 2 is Money of 24.68")
+    void givenMoneyWhenMultiplyBy2ThenValueOfMoneyDoubles() {
+        assertEquals(Money.parse("24.68"), Money.parse("12.34").multiply(2));
+    }
 }
