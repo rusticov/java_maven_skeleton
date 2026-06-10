@@ -11,7 +11,7 @@ public class RemoveItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 2)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 2)
         );
         Order order = new Order(inventory, new Order.Entry(productId, 2));
 
@@ -25,7 +25,7 @@ public class RemoveItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 2)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 2)
         );
         Order order = new Order(inventory, new Order.Entry(productId, 2));
 

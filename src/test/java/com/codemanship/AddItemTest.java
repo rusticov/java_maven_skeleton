@@ -13,7 +13,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 0)
         );
         Order order = new Order(inventory);
 
@@ -26,7 +26,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 0)
         );
         Order order = new Order(inventory);
 
@@ -39,7 +39,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 0)
         );
         Order order = new Order(inventory);
 
@@ -52,7 +52,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 7, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 7, 0)
         );
         Order order = new Order(inventory);
 
@@ -65,7 +65,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 1, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 1, 0)
         );
         Order order = new Order(inventory);
 
@@ -78,7 +78,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 1, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 1, 0)
         );
         Order order = new Order(inventory);
 
@@ -92,7 +92,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 1, 0)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 1, 0)
         );
         Order order = new Order(inventory);
 
@@ -107,7 +107,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 2, 1)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 2, 1)
         );
         Order order = new Order(inventory);
 
@@ -121,7 +121,7 @@ public class AddItemTest {
         Product.Id productId = new Product.Id(327);
 
         Inventory inventory = new Inventory(
-            new Product(productId, "Ibanez Tube Screamer", 2, 1)
+            new Product(productId, "Ibanez Tube Screamer", Money.parse("159.95"), 2, 1)
         );
         Order order = new Order(inventory);
 
