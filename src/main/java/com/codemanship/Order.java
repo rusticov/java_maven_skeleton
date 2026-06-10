@@ -53,13 +53,11 @@ public class Order {
 
     public Money shippingCost(Country country) {
         if (totalExcludingShipping().compareTo(Money.parse("100.00")) >= 0) {
-            if (country.region == Region.LOCAL) {
-                return Money.parse("0.00");
-            }
-            if (country.region == Region.OTHER) {
-                return Money.parse("9.99");
-            }
-            return Money.parse("5.99");
+            return switch (country.region) {
+                case LOCAL -> Money.parse("0.00");
+                case EU -> Money.parse("5.99");
+                case OTHER -> Money.parse("9.99");
+            };
         }
 
         return switch (country.region) {
