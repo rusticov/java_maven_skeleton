@@ -18,4 +18,10 @@ public class MoneyRepresentationTest {
     void otherMoneyToString() {
         assertEquals("12.34", Money.parse("12.34").toString());
     }
+
+    @Test
+    @DisplayName("given Money of 0.00 is equal to another Money of 0.00")
+    void givenMoney0_00WhenTestedForEqualityThenIsEqual() {
+        assertEquals(Money.parse("0.00"), Money.parse("0.00"));
+    }
 }
