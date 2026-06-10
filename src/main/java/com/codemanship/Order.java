@@ -56,6 +56,9 @@ public class Order {
             if (country.region == Region.LOCAL) {
                 return Money.parse("0.00");
             }
+            if (country.region == Region.OTHER) {
+                return Money.parse("9.99");
+            }
             return Money.parse("5.99");
         }
 

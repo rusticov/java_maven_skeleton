@@ -72,4 +72,15 @@ public class CalculateOrderShippingCostTest {
 
         assertEquals(Money.parse("12.99"), order.shippingCost(Country.UNITED_STATES));
     }
+
+    @Test
+    @DisplayName("order total at least 100 and Japan (non-EU) customer then shipping cost is 9.99")
+    void orderTotalAtLeast100AndJapanCustomerWhenShippingCalculatedThenShippingCostIs9_99() {
+        Inventory inventory = new Inventory(
+            new Product(new Product.Id(327), "Ibanez Tube Screamer", Money.parse("100.00"), 7, 1)
+        );
+        Order order = new Order(inventory, new Order.Entry(new Product.Id(327), 1));
+
+        assertEquals(Money.parse("9.99"), order.shippingCost(Country.UNITED_STATES));
+    }
 }
