@@ -5,8 +5,9 @@ import java.util.Map;
 
 public class Order {
 
+
     public enum Status {
-        Canceled, Confirmed, Open
+        Canceled, Confirmed, Open;
     }
 
     public record Entry(Product.Id id, int quantity) {
@@ -48,6 +49,10 @@ public class Order {
                 return inventory.getProduct(id).price().multiply(quantity);
             }).
             reduce(Money.parse("0.00"), Money::add);
+    }
+
+    public Money shippingCost(Country country) {
+        return Money.parse("5.99");
     }
 
     public void removeProduct(Product.Id id) {
