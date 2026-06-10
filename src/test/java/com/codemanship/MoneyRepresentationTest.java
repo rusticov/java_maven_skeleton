@@ -36,4 +36,9 @@ public class MoneyRepresentationTest {
     void givenMoneyWhenMultiplyBy2ThenValueOfMoneyDoubles() {
         assertEquals(Money.parse("24.68"), Money.parse("12.34").multiply(2));
     }
+
+    @Test
+    void givenMoneyAndLargerMoneyThenLargerMoneyIsGreaterThanSmaller() {
+        assertEquals(1, Money.parse("1.00").compareTo(Money.parse("0.00")));
+    }
 }

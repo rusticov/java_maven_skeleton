@@ -3,7 +3,7 @@ package com.codemanship;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Money {
+public class Money implements Comparable<Money> {
 
     private final BigDecimal value;
 
@@ -40,5 +40,10 @@ public class Money {
     @Override
     public String toString() {
         return value.toString();
+    }
+
+    @Override
+    public int compareTo(Money o) {
+        return 1;
     }
 }
