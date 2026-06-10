@@ -24,4 +24,10 @@ public class MoneyRepresentationTest {
     void givenMoney0_00WhenTestedForEqualityThenIsEqual() {
         assertEquals(Money.parse("0.00"), Money.parse("0.00"));
     }
+
+    @Test
+    @DisplayName("adding Moneys 10.30 + 2.04 then return Money 12.34")
+    void givenMoneyWhenAddingMoreMoneyThenReturnSumOfMoney() {
+        assertEquals(Money.parse("12.34"), Money.parse("10.30").add(Money.parse("2.04")));
+    }
 }

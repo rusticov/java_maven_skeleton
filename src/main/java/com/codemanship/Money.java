@@ -15,6 +15,10 @@ public class Money {
         return new Money(new BigDecimal(text));
     }
 
+    public Money add(Money other) {
+        return new Money(value.add(other.value));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
