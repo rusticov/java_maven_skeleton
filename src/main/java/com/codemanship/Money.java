@@ -26,6 +26,11 @@ public class Money implements Comparable<Money> {
     }
 
     @Override
+    public int compareTo(Money other) {
+        return value.compareTo(other.value);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
@@ -40,10 +45,5 @@ public class Money implements Comparable<Money> {
     @Override
     public String toString() {
         return value.toString();
-    }
-
-    @Override
-    public int compareTo(Money other) {
-        return value.compareTo(other.value);
     }
 }
