@@ -40,8 +40,8 @@ public class Order {
     }
 
     public Money totalExcludingShipping() {
-        return productQuantities.keySet().stream().
-            map((id) -> inventory.getProduct(id).price()).
+        return productQuantities.entrySet().stream().
+            map((entry) -> inventory.getProduct(entry.getKey()).price().multiply(entry.getValue())).
             reduce(Money.parse("0.00"), Money::add);
     }
 
